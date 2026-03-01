@@ -198,6 +198,18 @@ const NVIDIA_DEFAULT_COST = {
   cacheWrite: 0,
 };
 
+// 小智API — OpenAI-compatible endpoint
+const XIAOZHIAI_BASE_URL = "https://qwen.aifuture.icu/v1";
+export const XIAOZHIAI_DEFAULT_MODEL_ID = "qwen3-coder-flash";
+const XIAOZHIAI_DEFAULT_CONTEXT_WINDOW = 128000;
+const XIAOZHIAI_DEFAULT_MAX_TOKENS = 8192;
+const XIAOZHIAI_DEFAULT_COST = {
+  input: 0,
+  output: 0,
+  cacheRead: 0,
+  cacheWrite: 0,
+};
+
 const log = createSubsystemLogger("agents/model-providers");
 
 interface OllamaModel {
@@ -885,6 +897,24 @@ export function buildNvidiaProvider(): ProviderConfig {
   };
 }
 
+export function buildXiaozhiaiProvider(): ProviderConfig {
+  return {
+    baseUrl: XIAOZHIAI_BASE_URL,
+    api: "openai-completions",
+    models: [
+      {
+        id: XIAOZHIAI_DEFAULT_MODEL_ID,
+        name: "Qwen3 Coder Flash",
+        reasoning: false,
+        input: ["text"],
+        cost: XIAOZHIAI_DEFAULT_COST,
+        contextWindow: XIAOZHIAI_DEFAULT_CONTEXT_WINDOW,
+        maxTokens: XIAOZHIAI_DEFAULT_MAX_TOKENS,
+      },
+    ],
+  };
+}
+
 export function buildKilocodeProvider(): ProviderConfig {
   return {
     baseUrl: KILOCODE_BASE_URL,
@@ -1115,6 +1145,13 @@ export async function resolveImplicitProviders(params: {
     resolveApiKeyFromProfiles({ provider: "kilocode", store: authStore });
   if (kilocodeKey) {
     providers.kilocode = { ...buildKilocodeProvider(), apiKey: kilocodeKey };
+  }
+
+  const xiaozhiaiKey =
+    resolveEnvApiKeyVarName("xiaozhiai") ??
+    resolveApiKeyFromProfiles({ provider: "xiaozhiai", store: authStore });
+  if (xiaozhiaiKey) {
+    providers.xiaozhiai = { ...buildXiaozhiaiProvider(), apiKey: xiaozhiaiKey };
   }
 
   return providers;
