@@ -1,4 +1,6 @@
-# 🦞 OpenClaw — Personal AI Assistant
+# 🦞 OpenClaw — Personal AI Assistant（小智API 版）
+
+> **本仓库为 [openclaw/openclaw](https://github.com/openclaw/openclaw) 的 fork，内置[小智API](https://qwen.aifuture.icu) 服务商支持（OpenAI 兼容接口，默认模型 `qwen3-coder-flash`）。**
 
 <p align="center">
     <picture>
@@ -12,9 +14,8 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/openclaw/openclaw/actions/workflows/ci.yml?branch=main"><img src="https://img.shields.io/github/actions/workflow/status/openclaw/openclaw/ci.yml?branch=main&style=for-the-badge" alt="CI status"></a>
-  <a href="https://github.com/openclaw/openclaw/releases"><img src="https://img.shields.io/github/v/release/openclaw/openclaw?include_prereleases&style=for-the-badge" alt="GitHub release"></a>
-  <a href="https://discord.gg/clawd"><img src="https://img.shields.io/discord/1456350064065904867?label=Discord&logo=discord&logoColor=white&color=5865F2&style=for-the-badge" alt="Discord"></a>
+  <a href="https://github.com/xiaozhiapi/openclaw"><img src="https://img.shields.io/badge/GitHub-xiaozhiapi%2Fopenclaw-181717?style=for-the-badge&logo=github" alt="GitHub"></a>
+  <a href="https://www.npmjs.com/package/openclaw-xiaozhi"><img src="https://img.shields.io/npm/v/openclaw-xiaozhi?style=for-the-badge&label=npm" alt="npm version"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="MIT License"></a>
 </p>
 
@@ -52,8 +53,8 @@ Model note: while any model is supported, I strongly recommend **Anthropic Pro/M
 Runtime: **Node ≥22**.
 
 ```bash
-npm install -g openclaw@latest
-# or: pnpm add -g openclaw@latest
+npm install -g openclaw-xiaozhi@latest
+# or: pnpm add -g openclaw-xiaozhi@latest
 
 openclaw onboard --install-daemon
 ```
@@ -94,7 +95,7 @@ Details: [Development channels](https://docs.openclaw.ai/install/development-cha
 Prefer `pnpm` for builds from source. Bun is optional for running TypeScript directly.
 
 ```bash
-git clone https://github.com/openclaw/openclaw.git
+git clone https://github.com/xiaozhiapi/openclaw.git
 cd openclaw
 
 pnpm install

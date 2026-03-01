@@ -48,11 +48,11 @@ Notes:
 Global install (pick one):
 
 ```bash
-npm i -g openclaw@latest
+npm i -g openclaw-xiaozhi@latest
 ```
 
 ```bash
-pnpm add -g openclaw@latest
+pnpm add -g openclaw-xiaozhi@latest
 ```
 
 We do **not** recommend Bun for the Gateway runtime (WhatsApp/Telegram bugs).
@@ -210,14 +210,14 @@ Runbook + exact service labels: [Gateway runbook](/gateway)
 Install a known-good version (replace `<version>` with the last working one):
 
 ```bash
-npm i -g openclaw@<version>
+npm i -g openclaw-xiaozhi@<version>
 ```
 
 ```bash
-pnpm add -g openclaw@<version>
+pnpm add -g openclaw-xiaozhi@<version>
 ```
 
-Tip: to see the current published version, run `npm view openclaw version`.
+Tip: to see the current published version, run `npm view openclaw-xiaozhi version`.
 
 Then restart + re-run doctor:
 

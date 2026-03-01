@@ -75,7 +75,7 @@ For VPS/cloud hosts, avoid third-party "1-click" marketplace images when possibl
     <Tabs>
       <Tab title="npm">
         ```bash
-        npm install -g openclaw@latest
+        npm install -g openclaw-xiaozhi@latest
         openclaw onboard --install-daemon
         ```
 
@@ -83,7 +83,7 @@ For VPS/cloud hosts, avoid third-party "1-click" marketplace images when possibl
           If you have libvips installed globally (common on macOS via Homebrew) and `sharp` fails, force prebuilt binaries:
 
           ```bash
-          SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm install -g openclaw@latest
+          SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm install -g openclaw-xiaozhi@latest
           ```
 
           If you see `sharp: Please add node-gyp to your dependencies`, either install build tooling (macOS: Xcode CLT + `npm install -g node-gyp`) or use the env var above.
@@ -91,8 +91,8 @@ For VPS/cloud hosts, avoid third-party "1-click" marketplace images when possibl
       </Tab>
       <Tab title="pnpm">
         ```bash
-        pnpm add -g openclaw@latest
-        pnpm approve-builds -g        # approve openclaw, node-llama-cpp, sharp, etc.
+        pnpm add -g openclaw-xiaozhi@latest
+        pnpm approve-builds -g        # approve openclaw-xiaozhi, node-llama-cpp, sharp, etc.
         openclaw onboard --install-daemon
         ```
 
@@ -109,10 +109,10 @@ For VPS/cloud hosts, avoid third-party "1-click" marketplace images when possibl
 
     <Steps>
       <Step title="Clone and build">
-        Clone the [OpenClaw repo](https://github.com/openclaw/openclaw) and build:
+        Clone the [OpenClaw repo](https://github.com/xiaozhiapi/openclaw) and build:
 
         ```bash
-        git clone https://github.com/openclaw/openclaw.git
+        git clone https://github.com/xiaozhiapi/openclaw.git
         cd openclaw
         pnpm install
         pnpm ui:build
