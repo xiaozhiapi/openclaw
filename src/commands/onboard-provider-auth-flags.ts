@@ -14,6 +14,7 @@ type OnboardProviderAuthOptionKey = keyof Pick<
   | "geminiApiKey"
   | "zaiApiKey"
   | "xiaomiApiKey"
+  | "xiaozhiaiApiKey"
   | "minimaxApiKey"
   | "syntheticApiKey"
   | "veniceApiKey"
@@ -120,6 +121,13 @@ export const ONBOARD_PROVIDER_AUTH_FLAGS: ReadonlyArray<OnboardProviderAuthFlag>
     cliFlag: "--xiaomi-api-key",
     cliOption: "--xiaomi-api-key <key>",
     description: "Xiaomi API key",
+  },
+  {
+    optionKey: "xiaozhiaiApiKey",
+    authChoice: "xiaozhiai-api-key",
+    cliFlag: "--xiaozhiai-api-key",
+    cliOption: "--xiaozhiai-api-key <key>",
+    description: "小智API key",
   },
   {
     optionKey: "minimaxApiKey",

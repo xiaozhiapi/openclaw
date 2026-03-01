@@ -32,6 +32,7 @@ import {
   applyMistralConfig,
   applyXaiConfig,
   applyXiaomiConfig,
+  applyXiaozhiaiConfig,
   applyZaiConfig,
   setAnthropicApiKey,
   setCloudflareAiGatewayConfig,
@@ -55,6 +56,7 @@ import {
   setHuggingfaceApiKey,
   setVercelAiGatewayApiKey,
   setXiaomiApiKey,
+  setXiaozhiaiApiKey,
   setZaiApiKey,
 } from "../../onboard-auth.js";
 import {
@@ -360,6 +362,33 @@ export async function applyNonInteractiveAuthChoice(params: {
       mode: "api_key",
     });
     return applyXiaomiConfig(nextConfig);
+  }
+
+  if (authChoice === "xiaozhiai-api-key") {
+    const resolved = await resolveApiKey({
+      provider: "xiaozhiai",
+      cfg: baseConfig,
+      flagValue: opts.xiaozhiaiApiKey,
+      flagName: "--xiaozhiai-api-key",
+      envVar: "XIAOZHIAI_API_KEY",
+      runtime,
+    });
+    if (!resolved) {
+      return null;
+    }
+    if (
+      !(await maybeSetResolvedApiKey(resolved, (value) =>
+        setXiaozhiaiApiKey(value, undefined, apiKeyStorageOptions),
+      ))
+    ) {
+      return null;
+    }
+    nextConfig = applyAuthProfileConfig(nextConfig, {
+      profileId: "xiaozhiai:default",
+      provider: "xiaozhiai",
+      mode: "api_key",
+    });
+    return applyXiaozhiaiConfig(nextConfig);
   }
 
   if (authChoice === "xai-api-key") {

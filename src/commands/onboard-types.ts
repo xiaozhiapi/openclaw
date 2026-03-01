@@ -49,6 +49,7 @@ export type AuthChoice =
   | "volcengine-api-key"
   | "byteplus-api-key"
   | "qianfan-api-key"
+  | "xiaozhiai-api-key"
   | "custom-api-key"
   | "skip";
 export type AuthChoiceGroupId =
@@ -78,6 +79,7 @@ export type AuthChoiceGroupId =
   | "xai"
   | "volcengine"
   | "byteplus"
+  | "xiaozhiai"
   | "custom";
 export type GatewayAuthChoice = "token" | "password";
 export type ResetScope = "config" | "config+creds+sessions" | "full";
@@ -125,6 +127,7 @@ export type OnboardOptions = {
   geminiApiKey?: string;
   zaiApiKey?: string;
   xiaomiApiKey?: string;
+  xiaozhiaiApiKey?: string;
   minimaxApiKey?: string;
   syntheticApiKey?: string;
   veniceApiKey?: string;

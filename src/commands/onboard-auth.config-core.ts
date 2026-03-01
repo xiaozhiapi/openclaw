@@ -8,8 +8,10 @@ import {
   buildKimiCodingProvider,
   buildQianfanProvider,
   buildXiaomiProvider,
+  buildXiaozhiaiProvider,
   QIANFAN_DEFAULT_MODEL_ID,
   XIAOMI_DEFAULT_MODEL_ID,
+  XIAOZHIAI_DEFAULT_MODEL_ID,
 } from "../agents/models-config.providers.js";
 import {
   buildSyntheticModelDefinition,
@@ -38,6 +40,7 @@ import {
   OPENROUTER_DEFAULT_MODEL_REF,
   TOGETHER_DEFAULT_MODEL_REF,
   XIAOMI_DEFAULT_MODEL_REF,
+  XIAOZHIAI_DEFAULT_MODEL_REF,
   ZAI_DEFAULT_MODEL_REF,
   XAI_DEFAULT_MODEL_REF,
 } from "./onboard-auth.credentials.js";
@@ -295,6 +298,29 @@ export function applyXiaomiProviderConfig(cfg: OpenClawConfig): OpenClawConfig {
 export function applyXiaomiConfig(cfg: OpenClawConfig): OpenClawConfig {
   const next = applyXiaomiProviderConfig(cfg);
   return applyAgentDefaultModelPrimary(next, XIAOMI_DEFAULT_MODEL_REF);
+}
+
+export function applyXiaozhiaiProviderConfig(cfg: OpenClawConfig): OpenClawConfig {
+  const models = { ...cfg.agents?.defaults?.models };
+  models[XIAOZHIAI_DEFAULT_MODEL_REF] = {
+    ...models[XIAOZHIAI_DEFAULT_MODEL_REF],
+    alias: models[XIAOZHIAI_DEFAULT_MODEL_REF]?.alias ?? "Qwen3 Coder Flash",
+  };
+  const defaultProvider = buildXiaozhiaiProvider();
+  const resolvedApi = defaultProvider.api ?? "openai-completions";
+  return applyProviderConfigWithDefaultModels(cfg, {
+    agentModels: models,
+    providerId: "xiaozhiai",
+    api: resolvedApi,
+    baseUrl: defaultProvider.baseUrl,
+    defaultModels: defaultProvider.models ?? [],
+    defaultModelId: XIAOZHIAI_DEFAULT_MODEL_ID,
+  });
+}
+
+export function applyXiaozhiaiConfig(cfg: OpenClawConfig): OpenClawConfig {
+  const next = applyXiaozhiaiProviderConfig(cfg);
+  return applyAgentDefaultModelPrimary(next, XIAOZHIAI_DEFAULT_MODEL_REF);
 }
 
 /**

@@ -180,6 +180,12 @@ const AUTH_CHOICE_GROUP_DEFS: {
     choices: ["cloudflare-ai-gateway-api-key"],
   },
   {
+    value: "xiaozhiai",
+    label: "小智API",
+    hint: "API key (OpenAI-compatible, qwen3-coder-flash)",
+    choices: ["xiaozhiai-api-key"],
+  },
+  {
     value: "custom",
     label: "Custom Provider",
     hint: "Any OpenAI or Anthropic compatible endpoint",
