@@ -1,17 +1,17 @@
 {
-  "name": "openclaw",
-  "version": "2026.2.27",
-  "description": "Multi-channel AI gateway with extensible messaging integrations",
+  "name": "openclaw-xiaozhi",
+  "version": "2026.3.1",
+  "description": "Multi-channel AI gateway with extensible messaging integrations (小智API edition)",
   "keywords": [],
-  "homepage": "https://github.com/openclaw/openclaw#readme",
+  "homepage": "https://github.com/xiaozhiapi/openclaw#readme",
   "bugs": {
-    "url": "https://github.com/openclaw/openclaw/issues"
+    "url": "https://github.com/xiaozhiapi/openclaw/issues"
   },
   "license": "MIT",
-  "author": "",
+  "author": "xiaozhiapi",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/openclaw/openclaw.git"
+    "url": "git+https://github.com/xiaozhiapi/openclaw.git"
   },
   "bin": {
     "openclaw": "openclaw.mjs"
